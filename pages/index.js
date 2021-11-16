@@ -10,9 +10,10 @@ import withData from '../config';
 export default function Home() {
   const query = gql`
    query {
-    author {
+    MyJobsToDO {
      id
-     name
+     JobTitle
+     Description
     }
    }
 `
@@ -25,13 +26,14 @@ export default function Home() {
       </Head>
  
       <Query query={ query } fetchPolicy={ 'cache-and-network' }>
-      {({ loading, data: { author:authors }}) => {
+      {({ loading, data: { MyJobToDO:MyJobsToDO }}) => {
         return (
           <div>
             <div>
-             {authors.map((a, i) => (
+             {MyJobsToDO.map((a, i) => (
                 <div key={i}>
-                 <h2>{a.name}</h2>
+                 <h2>{a.JobTitle}</h2>
+                 <p>{a.Description}</p>
                 </div>
              ))}
             </div>
